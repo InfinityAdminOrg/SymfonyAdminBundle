@@ -7,7 +7,7 @@ use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\HttpFoundation\ParameterBag;
 
 /**
- * This field contains the shared properties of mapped fields, so that they can be quickly implemented
+ * This field contains the shared properties of mapped fields, so that they can be quickly implemented.
  */
 trait FieldPropertyTrait
 {

@@ -3,8 +3,8 @@
 namespace Infinity\Service;
 
 use Infinity\Enum\Request\ActionEnum;
-use Infinity\Enum\Request\TypeEnum;
 use Infinity\Enum\Request\ParameterEnum;
+use Infinity\Enum\Request\TypeEnum;
 use Infinity\Exception\Context\InvalidContextOptionException;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -34,7 +34,6 @@ class ContextService
         if (null === ($this->target = $request->query->get(ParameterEnum::Target->value))) {
             throw new InvalidContextOptionException('No target specified for api action');
         }
-
 
         $this->entityId = $request->query->get(ParameterEnum::EntityId->value);
 

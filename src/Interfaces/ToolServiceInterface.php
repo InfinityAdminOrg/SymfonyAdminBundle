@@ -8,10 +8,6 @@ use Infinity\Interfaces\Tool\ToolInterface;
 interface ToolServiceInterface
 {
     /**
-     * @param string $identifier
-     *
-     * @return ToolInterface
-     *
      * @throws NotFoundException
      */
     public function getTool(

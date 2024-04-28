@@ -14,16 +14,16 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 class InfinityController extends AbstractController
 {
-    #[Route("/{params}", name: 'infinity.clear.opa', requirements: ['params' => '.+'], defaults: ['params' => ''], methods: ["GET"], priority: -1)]
+    #[Route('/{params}', name: 'infinity.clear.opa', requirements: ['params' => '.+'], defaults: ['params' => ''], methods: ['GET'], priority: -1)]
     public function opa(
         RouterInterface $router
     ): Response {
-        return $this->render("@Infinity/base.html.twig", [
+        return $this->render('@Infinity/base.html.twig', [
             'base_url' => $router->generate('infinity.clear.opa', ['params' => '']),
         ]);
     }
 
-    #[Route("/login", name: 'infinity.clear.login', methods: ['POST'])]
+    #[Route('/login', name: 'infinity.clear.login', methods: ['POST'])]
     public function login(
         TokenStorageInterface $storage,
         UserTool $userTool

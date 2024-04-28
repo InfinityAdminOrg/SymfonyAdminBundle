@@ -8,6 +8,7 @@ use Infinity\Interfaces\ResourceServiceInterface;
 
 /**
  * @template T of object
+ *
  * @implements ResourceServiceInterface<T>
  */
 class ResourceService implements ResourceServiceInterface

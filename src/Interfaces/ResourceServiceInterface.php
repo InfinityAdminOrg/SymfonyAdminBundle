@@ -12,7 +12,6 @@ interface ResourceServiceInterface
 {
     /**
      * @param class-string<T> $class
-     * @param string|null $serviceId
      *
      * @return ResourceInterface<T>
      *
@@ -24,7 +23,7 @@ interface ResourceServiceInterface
     ): ResourceInterface;
 
     /**
-     * Where key is the entity class and value is an array of id -> ResourceMapInterface
+     * Where key is the entity class and value is an array of id -> ResourceMapInterface.
      *
      * @return iterable<class-string<T>, iterable<string, ResourceInterface<T>>>
      */

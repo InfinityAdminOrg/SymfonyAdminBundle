@@ -7,6 +7,7 @@ use Infinity\Interfaces\Mapping\ResourceInterface;
 
 /**
  * @template T of object
+ *
  * @implements ResourceInterface<T>
  */
 abstract class AbstractResource implements ResourceInterface
@@ -34,7 +35,7 @@ abstract class AbstractResource implements ResourceInterface
     }
 
     public function getTitle(
-        ?object $entity = null
+        object|null $entity = null
     ): string {
         $exploded = explode('\\', $this->entityClass);
         $label = end($exploded);

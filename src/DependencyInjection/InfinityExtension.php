@@ -14,7 +14,6 @@ class InfinityExtension extends Extension
 {
     /**
      * @param array<string, mixed> $configs
-     * @param ContainerBuilder $container
      *
      * @throws \Exception
      */
