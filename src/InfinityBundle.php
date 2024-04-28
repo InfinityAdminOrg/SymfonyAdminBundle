@@ -2,6 +2,7 @@
 
 namespace Infinity;
 
+use Infinity\Tool\DependencyInjection\CompilerPass\ToolAndActionGatheringCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -10,6 +11,7 @@ class InfinityBundle extends Bundle
     public function build(
         ContainerBuilder $container
     ): void {
+        $container->addCompilerPass(new ToolAndActionGatheringCompilerPass());
     }
 
     public function getPath(): string
