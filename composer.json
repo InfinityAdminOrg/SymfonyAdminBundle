@@ -1,0 +1,21 @@
+{
+    "name": "infinity-admin/symfony-admin-bundle",
+    "description": "An experimental Symfony admin bundle",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "pkly"
+        }
+    ],
+    "require": {
+        "php": ">=8.3",
+        "ext-json": "*",
+        "symfony/dependency-injection": "^7",
+        "symfony/form": "^7",
+        "symfony/framework-bundle": "^7",
+        "symfony/security-bundle": "^7",
+        "symfony/serializer": "^7",
+        "symfony/validator": "^7"
+    }
+}
