@@ -16,7 +16,7 @@ class InfinityBundle extends Bundle
 
     public function getPath(): string
     {
-        if (null === $this->path) {
+        if (!isset($this->path)) {
             $reflected = new \ReflectionObject($this);
             /** @var string $filename */
             $filename = $reflected->getFileName();

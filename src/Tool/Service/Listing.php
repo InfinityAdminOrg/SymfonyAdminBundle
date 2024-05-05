@@ -3,11 +3,12 @@
 namespace Infinity\Tool\Service;
 
 use Infinity\Tool\Exception\InvalidServiceException;
+use Infinity\Tool\Model\Service;
 
 class Listing
 {
     /**
-     * @param array<string, object> $services
+     * @param array<string, Service> $services
      */
     public function __construct(
         private readonly array $services
@@ -19,7 +20,15 @@ class Listing
      */
     public function get(
         string $service
-    ): object {
+    ): Service {
         return $this->services[$service] ?? throw new InvalidServiceException($service);
+    }
+
+    /**
+     * @return array<string, Service>
+     */
+    public function all(): array
+    {
+        return $this->services;
     }
 }

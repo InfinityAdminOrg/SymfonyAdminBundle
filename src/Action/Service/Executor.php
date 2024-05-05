@@ -3,31 +3,30 @@
 namespace Infinity\Action\Service;
 
 use Infinity\Action\Exception\InvalidExecutionException;
-use Infinity\Action\Service\Listing as ActionListing;
-use Infinity\Tool\Service\Listing as ToolListing;
+use Infinity\Context\Model\Context;
+use Infinity\Tool\Service\Listing;
 use Symfony\Component\HttpFoundation\Request;
 
 class Executor
 {
     public function __construct(
-        private readonly ToolListing $toolListing,
-        private readonly ActionListing $actionListing
+        private readonly Listing $listing
     ) {
     }
 
-    /**
-     * @throws InvalidExecutionException
-     */
-    public function __invoke(
-        string $service,
-        string $action,
-        Request $request
+    public function execute(
+        Request $request,
+        Context $context
     ): mixed {
-        if (!$this->actionListing->isValidMethod($service, $action)) {
-            throw new InvalidExecutionException($service, $action);
+        $service = $this->listing->get($context->getService());
+
+        if (!$service->hasAction($context->getAction())) {
+            throw new InvalidExecutionException(
+                $context->getService(),
+                $context->getAction()
+            );
         }
 
-        // todo: add permission checks for execution within the current context?
-        return $this->toolListing->get($service)->{$action}($request);
+        return $service->getService()->{$context->getAction()}($request);
     }
 }
