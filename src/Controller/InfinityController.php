@@ -2,8 +2,6 @@
 
 namespace Infinity\Controller;
 
-use Infinity\Action\Service\Executor;
-use Infinity\Tool\Service\Listing;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -34,7 +32,6 @@ class InfinityController extends AbstractController
     #[Route('/tools', name: 'infinity.tools', methods: ['GET'])]
     public function tools(
         Request $request,
-        Listing $listing,
         TranslatorInterface $translator
     ): JsonResponse {
         $response = [];
