@@ -1,5 +1,5 @@
 # SymfonyAdminBundle
-A modern symfony admin interface
+A modern symfony admin interface based on bootstrap and htmx.
 
 Installation
 ============

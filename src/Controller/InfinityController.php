@@ -36,27 +36,12 @@ class InfinityController extends AbstractController
     ): JsonResponse {
         $response = [];
 
-        foreach ($listing->all() as $service) {
-            $actions = [];
-
-            foreach ($service->getActions() as $action) {
-                $actions[$action->getMethod()] = [
-                    $action->getTitle()->trans($translator, $request->getLocale()),
-                    $action->getDescription()?->trans($translator, $request->getLocale()),
-                ];
-            }
-
-            $response[$service->getId()] = $actions;
-        }
-
         return $this->json($response);
     }
 
     #[Route('/api', name: 'infinity.api', methods: ['POST', 'GET', 'PATCH', 'DELETE'])]
     public function api(
-        Request $request,
-        Executor $executor
+        Request $request
     ): JsonResponse {
-        return $this->json($executor->execute($request, $request->attributes->get('inContext')));
     }
 }

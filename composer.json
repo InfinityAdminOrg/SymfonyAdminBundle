@@ -19,7 +19,11 @@
         "symfony/validator": "^7",
         "symfony/property-access": "^7",
         "symfony/property-info": "^7",
-        "symfony/translation": "^7"
+        "symfony/translation": "^7",
+        "symfony/asset": "^7",
+        "symfony/twig-bundle": "7.0.*",
+        "twig/extra-bundle": "^2.12|^3.0",
+        "twig/twig": "^2.12|^3.0"
     },
     "require-dev": {
         "phpstan/phpstan": "^1",
