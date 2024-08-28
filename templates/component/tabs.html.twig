@@ -1,0 +1,12 @@
+{% if id not defined %}
+    {% set id = uuid4() %}
+{% endif %}
+
+<ul class="nav nav-tabs" role="tablist" id="{{ id }}" {% block attributes %}{% endblock %}>
+    {% block tabs %}
+    {% endblock %}
+</ul>
+<div>
+    {% block tab_content %}
+    {% endblock %}
+</div>

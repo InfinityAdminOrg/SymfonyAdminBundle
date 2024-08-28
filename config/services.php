@@ -7,7 +7,10 @@ return static function (ContainerConfigurator $container) {
         ->defaults()
         ->private();
 
-    $services->set(\Infinity\Controller\InfinityController::class)
+    $services->set(\InfinityBundle\Controller\InfinityController::class)
         ->tag('container.service_subscriber')
         ->tag('controller.service_arguments');
+
+    $services->set(\InfinityBundle\Twig\UidExtension::class)
+        ->tag('twig.extension');
 };

@@ -1,0 +1,20 @@
+{% if id is not defined %}
+    {% set id = uuid4() %}
+{% endif %}
+
+<div class="modal fade" tabindex="-1" id="{{ id }}" {% block attributes %}{% endblock %}>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{% block title %}{% endblock %}</h5>
+                <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                {% block body %}{% endblock %}
+            </div>
+            <div class="modal-footer">
+                {% block footer %}{% endblock %}
+            </div>
+        </div>
+    </div>
+</div>

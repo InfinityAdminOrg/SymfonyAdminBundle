@@ -10,7 +10,7 @@
         <link type="text/css" rel="stylesheet" href="{{ asset('bundles/infinity/coreui-5.1.2-dist/css/coreui.min.css') }}" />
     {% endblock %}
 </head>
-<body>
+<body hx-get="{{ base_url }}" hx-trigger="load">
 {% block body %}
     <div id="modal-container">
         {% block modal_container %}{% endblock %}

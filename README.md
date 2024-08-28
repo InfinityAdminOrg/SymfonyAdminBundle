@@ -39,7 +39,7 @@ in the `config/bundles.php` file of your project:
 
 return [
     // ...
-    Infinity\InfinityBundle::class => ['all' => true],
+    InfinityBundle\InfinityBundle::class => ['all' => true],
 ];
 ```
 
