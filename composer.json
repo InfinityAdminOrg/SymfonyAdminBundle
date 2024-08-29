@@ -22,7 +22,8 @@
         "symfony/translation": "^7",
         "symfony/asset": "^7",
         "symfony/uid": "^7",
-        "symfony/twig-bundle": "7.0.*",
+        "symfony/twig-bundle": "7",
+        "symfony/event-dispatcher": "^7",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/twig": "^2.12|^3.0"
     },
