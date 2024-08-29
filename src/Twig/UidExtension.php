@@ -1,6 +1,6 @@
 <?php
 
-namespace InfinityBundle\Twig;
+namespace Infinity\Twig;
 
 use Symfony\Component\Uid\Uuid;
 use Twig\Extension\AbstractExtension;
@@ -11,7 +11,7 @@ class UidExtension extends AbstractExtension
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('uuid4', fn () => Uuid::v4()->toString()),
+            new TwigFunction('uuid4', fn () => Uuid::v4()->toRfc4122()),
         ];
     }
 }

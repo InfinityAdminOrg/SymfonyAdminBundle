@@ -2,7 +2,7 @@
     {% set id = uuid4() %}
 {% endif %}
 
-<div class="modal fade" tabindex="-1" id="{{ id }}" {% block attributes %}{% endblock %}>
+<div class="modal fade" tabindex="-1" id="{{ id }}" {% block attributes %}{% endblock %} hx-on--after-settle="console.log('OKAY!');">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
