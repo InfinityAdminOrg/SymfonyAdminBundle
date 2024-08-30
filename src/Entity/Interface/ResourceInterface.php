@@ -3,7 +3,6 @@
 namespace Infinity\Entity\Interface;
 
 use Infinity\Field\Interface\FieldDescriberInterface;
-use Infinity\Navigation\Interface\GroupInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -17,8 +16,6 @@ interface ResourceInterface
     public function display(
         Request $request
     ): bool;
-
-    public function group(): GroupInterface;
 
     /**
      * @return iterable<FieldDescriberInterface>

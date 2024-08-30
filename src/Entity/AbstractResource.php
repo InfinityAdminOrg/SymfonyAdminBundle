@@ -2,7 +2,9 @@
 
 namespace Infinity\Entity;
 
-abstract class AbstractResource
+use Infinity\Entity\Interface\ResourceInterface;
+
+abstract class AbstractResource implements ResourceInterface
 {
 
 }

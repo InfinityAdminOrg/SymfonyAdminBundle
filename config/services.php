@@ -12,6 +12,18 @@ return static function (ContainerConfigurator $container) {
         ->tag('controller.service_arguments')
         ->autowire();
 
+    $services->set(\Infinity\Navigation\Router::class)
+        ->autowire();
+
+    $services->set(\Infinity\Renderer\HtmxRenderer::class)
+        ->autowire();
+
+    $services->set(\Infinity\Entity\ResourceCollector::class);
+
     $services->set(\Infinity\Twig\UidExtension::class)
+        ->tag('twig.extension');
+
+    $services->set(\Infinity\Twig\MiscExtension::class)
+        ->autowire()
         ->tag('twig.extension');
 };

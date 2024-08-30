@@ -1,0 +1,13 @@
+.wrapper {
+    width: 100%;
+    padding-left: var(--cui-sidebar-occupy-start, 0);
+    padding-right: var(--cui-sidebar-occupy-end, 0);
+    will-change: auto;
+    transition: padding 0.15s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .wrapper {
+        transition: none;
+    }
+}

@@ -1,9 +1,9 @@
+{% extends '@InfinityBundle/base.html.twig' %}
+
 {% block container %}
-<div id="body" class="body flex-grow-1">
     <div class="container-lg px-4">
         {% block content %}
-            This is the dashboard content
+            This was rendered dynamically via separate logic in the request
         {% endblock %}
     </div>
-</div>
 {% endblock %}
