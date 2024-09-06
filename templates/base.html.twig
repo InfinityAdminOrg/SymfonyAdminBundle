@@ -11,13 +11,96 @@
         <link type="text/css" rel="stylesheet" href="{{ asset('bundles/infinity/css/style.css') }}" />
     {% endblock %}
 </head>
-<body>
+<body data-coreui-theme="dark">
 {% block body %}
     <div id="modal-container">
         {% block modal_container %}{% endblock %}
     </div>
-    {% include '@InfinityBundle/part/sidebar.html.twig' %}
-    {% include '@InfinityBundle/part/content.html.twig' %}
+    {% block sidebar %}
+        <div id="sidebar" class="sidebar border-end sidebar-fixed sidebar-dark">
+            <div class="sidebar-header border-bottom">
+                {% block sidebar_header %}
+                    <div class="sidebar-brand">InfinityAdmin</div>
+                {% endblock %}
+            </div>
+            <ul class="sidebar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" hx-get="{{ path('infinity.clear.opa') }}" hx-swap="innerHTML" hx-target="#body" hx-push-url="true">
+                        Dashboard
+                    </a>
+                </li>
+                {% set lastGroup = null %}
+                {% for resource in infinity_resource().all() %}
+                    {# @var \Infinity\Entity\Model\Resource resource #}
+                    {% if resource.displayable() %}
+                        {% if lastGroup is null or lastGroup != resource.group.id %}
+                            <li class="nav-title">
+                                {{ resource.group.label }}
+                            </li>
+                        {% endif %}
+
+                        <li class="nav-item">
+                            <a class="nav-link" hx-get="{{ infinity_router().generate(resource) }}" hx-swap="innerHTML" hx-target="#body" hx-push-url="true">
+                                {{ resource.entity }}
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <div class="sidebar-footer border-top d-flex">
+                <button class="sidebar-toggler" type="button"></button>
+            </div>
+        </div>
+    {% endblock %}
+    <div id="content" class="wrapper d-flex flex-column min-vh-100">
+        {% block header %}
+            <header id="header" class="header header-sticky p-0 mb-4" {% block header_attributes %}{% endblock %}>
+                {% block header_content %}
+                    <div id="header-content" class="container-fluid border-bottom px-4" {% block header_content_attributes %}{% endblock %}>
+                        <ul class="header-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    Some
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    Some
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    Some
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                {% endblock %}
+                {% block breadcrumb %}
+                    <div id="breadcrumb" class="container-fluid px-4" {% block breadcrumb_attributes %}{% endblock %}>
+                        {% block breadcrumb_content %}
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb my-0">
+                                    <li class="breadcrumb-item active">
+                                        Something
+                                    </li>
+                                </ol>
+                            </nav>
+                        {% endblock %}
+                    </div>
+                {% endblock %}
+            </header>
+        {% endblock %}
+        {% block container %}
+            <div id="body" class="body flex-grow-1">
+                <div class="container-lg px-4">
+                    {% block content %}
+                        This is the dashboard content
+                    {% endblock %}
+                </div>
+            </div>
+        {% endblock %}
+    </div>
 {% endblock %}
 {% block body_scripts %}
     <script src="{{ asset('bundles/infinity/htmx/htmx.min.js') }}"></script>

@@ -1,9 +1,8 @@
 {% extends '@InfinityBundle/base.html.twig' %}
 
-{% block container %}
-    <div class="container-lg px-4">
-        {% block content %}
-            This was rendered dynamically via separate logic in the request
-        {% endblock %}
-    </div>
+{% block content %}
+    This is the resource view rendered dynamically (or not)
+    <br>
+
+    {{ dump() }}
 {% endblock %}

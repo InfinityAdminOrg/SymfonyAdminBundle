@@ -2,7 +2,7 @@
 
 namespace Infinity\Controller;
 
-use Infinity\Renderer\HtmxRenderer;
+use Infinity\Responder\Responder;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,9 +16,9 @@ class InfinityController extends AbstractController
     #[Route('/{params}', name: 'infinity.clear.opa', requirements: ['params' => '.+'], defaults: ['params' => ''], methods: ['GET', 'POST', 'DELETE', 'PATCH'], priority: -1)]
     public function opa(
         Request $request,
-        HtmxRenderer $renderer
+        Responder $responder
     ): Response {
-        return $renderer->render($request);
+        return $responder->responder($request);
     }
 
     #[Route('/login', name: 'infinity.clear.login', methods: ['GET', 'POST'])]

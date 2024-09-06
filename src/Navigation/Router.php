@@ -21,7 +21,7 @@ class Router
         Action|null $action = null
     ): string {
         return $this->router->generate('infinity.clear.opa', [
-            'resource' => $resource->id,
+            'resourceId' => $resource->id,
             'action' => $action?->identifier ?? 'index',
         ]);
     }

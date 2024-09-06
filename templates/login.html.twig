@@ -1,30 +1,39 @@
 {% extends '@InfinityBundle/base.html.twig' %}
 
 {% block body %}
-    <div>
-        <form hx-post="" >
-            <div>
-                <div>
-                    <label>Identifier</label>
-                </div>
-                <div>
-                    <input type="text" name="_username" required />
+    <div class="pt-5">
+        <div class="container">
+            <div class="row">
+                <div class="mt-5 col-12 col-md-6 mx-auto mb-4 bg-secondary rounded-3">
+                    Logo placeholder
                 </div>
             </div>
-            <div>
-                <div>
-                    <label>Password</label>
-                </div>
-                <div>
-                    <input type="password" name="_password" required />
+            <div class="row">
+                <div class="mt-5 col-12 col-md-9 mx-auto p-3 rounded-3 bg-secondary">
+                    <form method="post">
+                        <div class="row">
+                            <label class="col-12 col-md-3 col-form-label" for="_username">Identifier</label>
+                            <div class="col-12 col-md-9">
+                                <input class="form-control" type="text" name="_username" required id="_username" />
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <label class="col-12 col-md-3 col-form-label" for="_password">Password</label>
+                            <div class="col-12 col-md-9">
+                                <input class="form-control" type="password" name="_password" required id="_password" />
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="_target_path" value="{{ url('infinity.clear.opa') }}" />
+
+                        <div class="row align-items-center">
+                            <button type="submit" class="btn btn-primary mt-3 w-auto mx-auto">
+                                Login
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
-
-            <input type="hidden" name="_target_path" value="{{ url('infinity.clear.opa') }}" />
-
-            <button type="submit">
-                Login
-            </button>
-        </form>
+        </div>
     </div>
 {% endblock %}

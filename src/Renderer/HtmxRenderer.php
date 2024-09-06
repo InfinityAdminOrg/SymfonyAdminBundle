@@ -2,8 +2,7 @@
 
 namespace Infinity\Renderer;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Infinity\Context\Model\Context;
 use Twig\Environment;
 
 class HtmxRenderer
@@ -14,19 +13,15 @@ class HtmxRenderer
     }
 
     public function render(
-        Request $request
-    ): Response {
-        // process request
+        string $template,
+        Context $context,
+        array $variables = []
+    ): string {
+        $wrapper = $this->twig->load($template);
 
-        $isHtmx = 'true' === $request->headers->get('hx-request');
-
-        $wrapper = $this->twig->load('@InfinityBundle/'.($isHtmx ? 'dynamic' : 'base').'.html.twig');
-
-        return new Response(
-            match ($isHtmx) {
-                false => $wrapper->render(),
-                true => $wrapper->renderBlock('container'),
-            }
-        );
+        return match ($context->isHtmx()) {
+            false => $wrapper->render($variables),
+            true => $wrapper->renderBlock('container', $variables),
+        };
     }
 }
