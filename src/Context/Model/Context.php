@@ -2,18 +2,24 @@
 
 namespace Infinity\Context\Model;
 
-use Infinity\Context\Interface\ContextPartInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class Context
 {
     /**
-     * @param list<ContextPartInterface> $parts
+     * @param list<object> $parts
      */
     public function __construct(
+        private readonly UserInterface|null $user,
         private readonly Request $request,
         private readonly array $parts
     ) {
+    }
+
+    public function getUser(): UserInterface|null
+    {
+        return $this->user;
     }
 
     public function isHtmx(): bool
@@ -22,7 +28,7 @@ class Context
     }
 
     /**
-     * @template T of ContextPartInterface
+     * @template T of object
      *
      * @param class-string<T> $target
      *
@@ -30,7 +36,7 @@ class Context
      */
     public function get(
         string $target
-    ): ContextPartInterface|null {
+    ): object|null {
         foreach ($this->parts as $part) {
             if ($part instanceof $target) {
                 return $part;

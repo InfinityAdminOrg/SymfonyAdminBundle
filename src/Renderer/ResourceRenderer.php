@@ -2,8 +2,8 @@
 
 namespace Infinity\Renderer;
 
-use Infinity\Context\Interface\RoutingInterface;
 use Infinity\Context\Model\Context;
+use Infinity\Context\Model\Route;
 use Infinity\Entity\ResourceCollector;
 use Infinity\Navigation\Model\Breadcrumb;
 use Infinity\Navigation\Navigator;
@@ -26,7 +26,7 @@ class ResourceRenderer implements RendererInterface
         Request $request,
         Context $context
     ): Response|null {
-        if (null === ($router = $context->get(RoutingInterface::class))) {
+        if (null === ($router = $context->get(Route::class))) {
             return null;
         }
 
@@ -38,7 +38,7 @@ class ResourceRenderer implements RendererInterface
 
         $this->navigator->push(new Breadcrumb(
             'Dashboard',
-            $this->router->generate('infinity.clear.opa')
+            $this->router->generate('infinity.opa')
         ))->push(new Breadcrumb(
             end($imploded)
         ));
@@ -49,7 +49,6 @@ class ResourceRenderer implements RendererInterface
                 $request,
                 $context,
                 [
-                    'infinity_context' => $context,
                     'infinity_variables' => [
                         'resourceId' => $resourceId,
                         'action' => $router->getAction(),

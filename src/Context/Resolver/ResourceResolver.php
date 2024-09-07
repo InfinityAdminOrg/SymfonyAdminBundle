@@ -2,7 +2,6 @@
 
 namespace Infinity\Context\Resolver;
 
-use Infinity\Context\Interface\ContextPartInterface;
 use Infinity\Context\Interface\ResolverInterface;
 use Infinity\Context\Model\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,7 +13,7 @@ class ResourceResolver implements ResolverInterface
 {
     public function resolve(
         Request $request
-    ): ContextPartInterface|null {
+    ): object|null {
         if (null === ($resource = $request->query->get('resourceId'))) {
             return null;
         }

@@ -2,9 +2,7 @@
 
 namespace Infinity\Context\Model;
 
-use Infinity\Context\Interface\RoutingInterface;
-
-class Route implements RoutingInterface
+class Route
 {
     public function __construct(
         private readonly string $resource,

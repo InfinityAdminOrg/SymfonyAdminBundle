@@ -53,6 +53,7 @@ return static function (ContainerConfigurator $container) {
         ->tag(\Infinity\InfinityBundle::CONTEXT_RESOLVER_TAG);
 
     $services->set(\Infinity\Context\Creator::class)
+        ->autowire()
         ->arg(0, new TaggedIteratorArgument(\Infinity\InfinityBundle::CONTEXT_RESOLVER_TAG));
 
     $services->set(\Infinity\Twig\UidExtension::class)

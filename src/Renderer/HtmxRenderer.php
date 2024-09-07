@@ -27,6 +27,8 @@ class HtmxRenderer
         $wrapper = $this->twig->load($template);
         $partials = [];
 
+        $variables['infinity_context'] = $context;
+
         if ($context->isHtmx()) {
             foreach ($this->partials as $partial) {
                 if (null === ($content = $partial->render($request, $context))) {

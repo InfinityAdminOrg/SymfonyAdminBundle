@@ -8,5 +8,5 @@ interface ResolverInterface
 {
     public function resolve(
         Request $request
-    ): ContextPartInterface|null;
+    ): object|null;
 }

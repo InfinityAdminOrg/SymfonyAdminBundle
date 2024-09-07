@@ -25,7 +25,7 @@
             </div>
             <ul class="sidebar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" hx-get="{{ path('infinity.clear.opa') }}" hx-swap="innerHTML" hx-target="#body" hx-push-url="true">
+                    <a class="nav-link" hx-get="{{ path('infinity.opa') }}" hx-swap="innerHTML" hx-target="#body" hx-push-url="true">
                         Dashboard
                     </a>
                 </li>
@@ -70,8 +70,11 @@
                             </li>
                             {% include '@InfinityBundle/component/header/vertical-spacer.html.twig' %}
                             <li class="nav-item dropdown">
-                                <a class="nav-link py-0 pe-0" data-coreui-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">
-                                    <div class="avatar avatar-md">
+                                <a class="nav-link py-0 pe-0 d-flex align-items-center" data-coreui-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">
+                                    <span>
+                                        {{ infinity_context.user() }}
+                                    </span>
+                                    <div class="avatar avatar-md ms-2">
                                         <img class="avatar-img" src="https://placehold.co/50" />
                                     </div>
                                 </a>
@@ -84,6 +87,9 @@
                                         <span class="badge badge-sm bg-info ms-2">
                                             55
                                         </span>
+                                    </a>
+                                    <a class="dropdown-item" href="{{ path('infinity.logout') }}">
+                                        Logout
                                     </a>
                                 </div>
                             </li>
