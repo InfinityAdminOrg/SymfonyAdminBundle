@@ -16,6 +16,9 @@ return static function (ContainerConfigurator $container) {
     $services->set(\Infinity\Navigation\Router::class)
         ->autowire();
 
+    $services->set(\Infinity\Navigation\Navigator::class)
+        ->autowire();
+
     $services->set(\Infinity\Renderer\ResourceRenderer::class)
         ->autowire()
         ->tag(\Infinity\InfinityBundle::HTMX_RENDERER_TAG);
@@ -24,8 +27,21 @@ return static function (ContainerConfigurator $container) {
         ->autowire()
         ->tag(\Infinity\InfinityBundle::HTMX_RENDERER_TAG);
 
+    $services->set(\Infinity\Renderer\Partial\SidebarRenderer::class)
+        ->autowire()
+        ->tag(\Infinity\InfinityBundle::HTMX_PARTIAL_RENDERER_TAG);
+
+    $services->set(\Infinity\Renderer\Partial\BreadcrumbRenderer::class)
+        ->autowire()
+        ->tag(\Infinity\InfinityBundle::HTMX_PARTIAL_RENDERER_TAG);
+
+    $services->set(\Infinity\Renderer\Partial\TitleRenderer::class)
+        ->autowire()
+        ->tag(\Infinity\InfinityBundle::HTMX_PARTIAL_RENDERER_TAG);
+
     $services->set(\Infinity\Renderer\HtmxRenderer::class)
-        ->autowire();
+        ->autowire()
+        ->arg(0, new TaggedIteratorArgument(\Infinity\InfinityBundle::HTMX_PARTIAL_RENDERER_TAG));
 
     $services->set(\Infinity\Responder\Responder::class)
         ->arg(0, new TaggedIteratorArgument(\Infinity\InfinityBundle::HTMX_RENDERER_TAG))

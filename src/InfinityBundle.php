@@ -8,6 +8,7 @@ use Infinity\Entity\DependencyInjection\ResourceCompilerPass;
 use Infinity\Entity\Interface\ResourceInterface;
 use Infinity\Field\Interface\FieldDescriberInterface;
 use Infinity\Field\Interface\FieldHandlerInterface;
+use Infinity\Renderer\Interface\PartialRendererInterface;
 use Infinity\Renderer\Interface\RendererInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
@@ -22,6 +23,7 @@ class InfinityBundle extends Bundle
     public const string CONTEXT_RESOLVER_TAG = 'infinity.context.resolver';
 
     public const string HTMX_RENDERER_TAG = 'infinity.htmx.renderer';
+    public const string HTMX_PARTIAL_RENDERER_TAG = 'infinity.htmx.partial_renderer';
 
     public function build(
         ContainerBuilder $container
@@ -35,6 +37,7 @@ class InfinityBundle extends Bundle
             ResolverInterface::class => self::CONTEXT_RESOLVER_TAG,
 
             RendererInterface::class => self::HTMX_RENDERER_TAG,
+            PartialRendererInterface::class => self::HTMX_PARTIAL_RENDERER_TAG,
         ]));
 
         $container->addCompilerPass(new ResourceCompilerPass());

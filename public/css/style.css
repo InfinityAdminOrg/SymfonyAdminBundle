@@ -11,3 +11,11 @@
         transition: none;
     }
 }
+
+.header > .container-fluid, .header > .container-sm, .header > .container-md, .header > .container-lg, .header > .container-xl, .header > .container-xxl, .sidebar-header{
+    min-height: calc(4rem + 1px);
+}
+
+.header > .container-fluid + .container-fluid, .header > .container-sm + .container-fluid, .header > .container-md + .container-fluid, .header > .container-lg + .container-fluid, .header > .container-xl + .container-fluid, .header > .container-xxl + .container-fluid, .header > .container-fluid + .container-sm, .header > .container-sm + .container-sm, .header > .container-md + .container-sm, .header > .container-lg + .container-sm, .header > .container-xl + .container-sm, .header > .container-xxl + .container-sm, .header > .container-fluid + .container-md, .header > .container-sm + .container-md, .header > .container-md + .container-md, .header > .container-lg + .container-md, .header > .container-xl + .container-md, .header > .container-xxl + .container-md, .header > .container-fluid + .container-lg, .header > .container-sm + .container-lg, .header > .container-md + .container-lg, .header > .container-lg + .container-lg, .header > .container-xl + .container-lg, .header > .container-xxl + .container-lg, .header > .container-fluid + .container-xl, .header > .container-sm + .container-xl, .header > .container-md + .container-xl, .header > .container-lg + .container-xl, .header > .container-xl + .container-xl, .header > .container-xxl + .container-xl, .header > .container-fluid + .container-xxl, .header > .container-sm + .container-xxl, .header > .container-md + .container-xxl, .header > .container-lg + .container-xxl, .header > .container-xl + .container-xxl, .header > .container-xxl + .container-xxl {
+    min-height: 3rem;
+}

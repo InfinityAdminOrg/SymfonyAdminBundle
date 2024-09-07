@@ -5,7 +5,7 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}{{ infinity_navigator() }}{% endblock %}</title>
         <link type="text/css" rel="stylesheet" href="{{ asset('bundles/infinity/coreui-5.1.2-dist/css/coreui-reboot.min.css') }}" />
         <link type="text/css" rel="stylesheet" href="{{ asset('bundles/infinity/coreui-5.1.2-dist/css/coreui.min.css') }}" />
         <link type="text/css" rel="stylesheet" href="{{ asset('bundles/infinity/css/style.css') }}" />
@@ -17,7 +17,7 @@
         {% block modal_container %}{% endblock %}
     </div>
     {% block sidebar %}
-        <div id="sidebar" class="sidebar border-end sidebar-fixed sidebar-dark">
+        <div id="sidebar" class="sidebar border-end sidebar-fixed sidebar-dark" data-random="{{ uuid4() }}" {% block sidebar_attributes %}{% endblock %}>
             <div class="sidebar-header border-bottom">
                 {% block sidebar_header %}
                     <div class="sidebar-brand">InfinityAdmin</div>
@@ -68,10 +68,24 @@
                                     Some
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    Some
+                            {% include '@InfinityBundle/component/header/vertical-spacer.html.twig' %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link py-0 pe-0" data-coreui-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#">
+                                    <div class="avatar avatar-md">
+                                        <img class="avatar-img" src="https://placehold.co/50" />
+                                    </div>
                                 </a>
+                                <div class="dropdown-menu dropdown-menu-end pt-0" data-popper-placement="bottom-end">
+                                    <div class="dropdown-header bg-body-tertiary text-body-secondary fw-semibold rounded-top-2 mb-2">
+                                        Account
+                                    </div>
+                                    <a class="dropdown-item">
+                                        Some text
+                                        <span class="badge badge-sm bg-info ms-2">
+                                            55
+                                        </span>
+                                    </a>
+                                </div>
                             </li>
                         </ul>
                     </div>
@@ -81,9 +95,17 @@
                         {% block breadcrumb_content %}
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb my-0">
-                                    <li class="breadcrumb-item active">
-                                        Something
-                                    </li>
+                                    {% for crumb in infinity_navigator().get() %}
+                                        <li class="breadcrumb-item {% if loop.last %}active{% endif %}">
+                                            {% if not loop.last %}
+                                                <a hx-get="{{  crumb.url }}" hx-swap="innerHTML" hx-target="#body" hx-push-url="true">
+                                                    {{ crumb.label }}
+                                                </a>
+                                            {% else %}
+                                                {{ crumb.label }}
+                                            {% endif %}
+                                        </li>
+                                    {% endfor %}
                                 </ol>
                             </nav>
                         {% endblock %}
@@ -104,7 +126,6 @@
 {% endblock %}
 {% block body_scripts %}
     <script src="{{ asset('bundles/infinity/htmx/htmx.min.js') }}"></script>
-    <script src="{{ asset('bundles/infinity/coreui-5.1.2-dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('bundles/infinity/coreui-5.1.2-dist/js/coreui.bundle.min.js') }}"></script>
 {% endblock %}
 </body>
