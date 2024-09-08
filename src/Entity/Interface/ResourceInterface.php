@@ -20,5 +20,5 @@ interface ResourceInterface
     /**
      * @return iterable<FieldDescriberInterface>
      */
-    public function fields(): iterable;
+    public function describers(): iterable;
 }

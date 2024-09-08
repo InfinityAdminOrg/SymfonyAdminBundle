@@ -100,6 +100,7 @@ class ResourceCompilerPass implements CompilerPassInterface
             }
 
             $definitions[$resourceId = $id.'.resource'] = new Definition(Resource::class, [
+                new Reference($id),
                 $instance->entity,
                 $id,
                 $finalActions,

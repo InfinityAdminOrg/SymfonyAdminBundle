@@ -2,6 +2,7 @@
 
 namespace Infinity\Entity\Model;
 
+use Infinity\Entity\Interface\ResourceInterface;
 use Infinity\Navigation\Attribute\Action;
 use Infinity\Navigation\Attribute\Group;
 
@@ -12,6 +13,7 @@ readonly class Resource
      * @param list<Action> $actions
      */
     public function __construct(
+        public ResourceInterface $resource,
         public string $entity,
         public string $id,
         public array $actions,
